@@ -1,0 +1,535 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="https://github.com/mbeclawski/cars-ontology"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="https://github.com/mbeclawski/cars-ontology">
+    <Prefix name="" IRI="https://github.com/mbeclawski/cars-ontology#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Battery"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Brand"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Car"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CarBody"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CarEngine"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Combustion"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Coupe"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Fast"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hatchback"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hybrid"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hydrogen"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MPG"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MiniVan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Model"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PickupTruck"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SUV"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sedan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sports"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#10Cylinder"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#4Cylinder"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#6Cylinder"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#8Cylinder"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasBodyType"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasBrand"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasEngine"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasCityMPG"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasDisplacement"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasEngineDisplacement"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasHighwayMPG"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasMPG"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasModelYear"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasNumberOfDoors"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasNumberOfSeats"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Acura"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Cadillac"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Car1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#City"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Coupe"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Fiat"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Ford"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#GMC"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Highway"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Honda"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HondaCRV1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#HondaCivicCoupe1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Hyundai"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#I4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Infinity"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MercedesBenz"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#MiniVan"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Nissan"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#PickupTruck"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#SUV"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Sedan"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Toyota"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#V6"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#CarBody"/>
+        <ObjectOneOf>
+            <NamedIndividual IRI="#Coupe"/>
+            <NamedIndividual IRI="#MiniVan"/>
+            <NamedIndividual IRI="#PickupTruck"/>
+            <NamedIndividual IRI="#SUV"/>
+            <NamedIndividual IRI="#Sedan"/>
+        </ObjectOneOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Coupe"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Car"/>
+            <DataHasValue>
+                <DataProperty IRI="#hasNumberOfDoors"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+            </DataHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#SUV"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Car"/>
+            <DataHasValue>
+                <DataProperty IRI="#hasNumberOfDoors"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5</Literal>
+            </DataHasValue>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#Battery"/>
+        <Class IRI="#CarEngine"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Car"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasNumberOfDoors"/>
+            <Datatype abbreviatedIRI="xsd:integer"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Car"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#hasNumberOfSeats"/>
+            <Datatype abbreviatedIRI="xsd:integer"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Combustion"/>
+        <Class IRI="#CarEngine"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Coupe"/>
+        <Class IRI="#Car"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Fast"/>
+        <Class IRI="#Car"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hatchback"/>
+        <Class IRI="#Car"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hatchback"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Car"/>
+            <DataHasValue>
+                <DataProperty IRI="#hasNumberOfDoors"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5</Literal>
+            </DataHasValue>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hybrid"/>
+        <Class IRI="#CarEngine"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hydrogen"/>
+        <Class IRI="#CarEngine"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MiniVan"/>
+        <Class IRI="#Car"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PickupTruck"/>
+        <Class IRI="#Car"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SUV"/>
+        <Class IRI="#Car"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sedan"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Car"/>
+            <DataHasValue>
+                <DataProperty IRI="#hasNumberOfDoors"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">4</Literal>
+            </DataHasValue>
+        </ObjectIntersectionOf>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sports"/>
+        <Class IRI="#Car"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#10Cylinder"/>
+        <Class IRI="#Combustion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#4Cylinder"/>
+        <Class IRI="#Combustion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#6Cylinder"/>
+        <Class IRI="#Combustion"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#8Cylinder"/>
+        <Class IRI="#Combustion"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Battery"/>
+        <Class IRI="#Combustion"/>
+        <Class IRI="#Hybrid"/>
+        <Class IRI="#Hydrogen"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Car"/>
+        <Class IRI="#CarBody"/>
+        <Class IRI="#CarEngine"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#Brand"/>
+        <NamedIndividual IRI="#Acura"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Brand"/>
+        <NamedIndividual IRI="#Cadillac"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MPG"/>
+        <NamedIndividual IRI="#City"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Brand"/>
+        <NamedIndividual IRI="#Fiat"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Brand"/>
+        <NamedIndividual IRI="#Ford"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Brand"/>
+        <NamedIndividual IRI="#GMC"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#MPG"/>
+        <NamedIndividual IRI="#Highway"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Brand"/>
+        <NamedIndividual IRI="#Honda"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Brand"/>
+        <NamedIndividual IRI="#Hyundai"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Brand"/>
+        <NamedIndividual IRI="#Infinity"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Brand"/>
+        <NamedIndividual IRI="#MercedesBenz"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CarBody"/>
+        <NamedIndividual IRI="#Sedan"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Brand"/>
+        <NamedIndividual IRI="#Toyota"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasBrand"/>
+        <NamedIndividual IRI="#Car1"/>
+        <NamedIndividual IRI="#Infinity"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasBrand"/>
+        <NamedIndividual IRI="#HondaCRV1"/>
+        <NamedIndividual IRI="#Honda"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasBrand"/>
+        <NamedIndividual IRI="#HondaCivicCoupe1"/>
+        <NamedIndividual IRI="#Honda"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasNumberOfDoors"/>
+        <NamedIndividual IRI="#HondaCRV1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasEngineDisplacement"/>
+        <NamedIndividual IRI="#HondaCivicCoupe1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">1.6</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasNumberOfDoors"/>
+        <NamedIndividual IRI="#HondaCivicCoupe1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </DataPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasBodyType"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasBrand"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasEngine"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasBodyType"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasBrand"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#hasEngine"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasBodyType"/>
+        <Class IRI="#Car"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasBrand"/>
+        <Class IRI="#Car"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasEngine"/>
+        <Class IRI="#Car"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasBodyType"/>
+        <Class IRI="#CarBody"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasBrand"/>
+        <Class IRI="#Brand"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasEngine"/>
+        <Class IRI="#CarEngine"/>
+    </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasCityMPG"/>
+        <DataProperty IRI="#hasMPG"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasEngineDisplacement"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasHighwayMPG"/>
+        <DataProperty IRI="#hasMPG"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasModelYear"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasNumberOfDoors"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasNumberOfSeats"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasCityMPG"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasHighwayMPG"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasDisplacement"/>
+        <ObjectUnionOf>
+            <Class IRI="#Combustion"/>
+            <Class IRI="#Hybrid"/>
+        </ObjectUnionOf>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasEngineDisplacement"/>
+        <Class IRI="#Car"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasMPG"/>
+        <Class IRI="#Car"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasModelYear"/>
+        <Class IRI="#Car"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasNumberOfDoors"/>
+        <Class IRI="#Car"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasNumberOfSeats"/>
+        <Class IRI="#Car"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasCityMPG"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasDisplacement"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasEngineDisplacement"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasHighwayMPG"/>
+        <Datatype abbreviatedIRI="xsd:decimal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasModelYear"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasNumberOfDoors"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasNumberOfSeats"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

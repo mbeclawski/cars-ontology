@@ -1,0 +1,391 @@
+@prefix : <https://github.com/mbeclawski/cars-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://github.com/mbeclawski/cars-ontology> .
+
+<https://github.com/mbeclawski/cars-ontology> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://github.com/mbeclawski/cars-ontology#hasBodyType
+:hasBodyType rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdf:type owl:FunctionalProperty ;
+             rdfs:domain :Car ;
+             rdfs:range :CarBody .
+
+
+###  https://github.com/mbeclawski/cars-ontology#hasBrand
+:hasBrand rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdf:type owl:FunctionalProperty ;
+          rdfs:domain :Car ;
+          rdfs:range :Brand .
+
+
+###  https://github.com/mbeclawski/cars-ontology#hasEngine
+:hasEngine rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdf:type owl:FunctionalProperty ;
+           rdfs:domain :Car ;
+           rdfs:range :CarEngine .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://github.com/mbeclawski/cars-ontology#hasCityMPG
+:hasCityMPG rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf :hasMPG ;
+            rdf:type owl:FunctionalProperty ;
+            rdfs:range xsd:decimal .
+
+
+###  https://github.com/mbeclawski/cars-ontology#hasDisplacement
+:hasDisplacement rdf:type owl:DatatypeProperty ;
+                 rdfs:domain [ rdf:type owl:Class ;
+                               owl:unionOf ( :Combustion
+                                             :Hybrid
+                                           )
+                             ] ;
+                 rdfs:range xsd:double .
+
+
+###  https://github.com/mbeclawski/cars-ontology#hasEngineDisplacement
+:hasEngineDisplacement rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf owl:topDataProperty ;
+                       rdfs:domain :Car ;
+                       rdfs:range xsd:decimal .
+
+
+###  https://github.com/mbeclawski/cars-ontology#hasHighwayMPG
+:hasHighwayMPG rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf :hasMPG ;
+               rdf:type owl:FunctionalProperty ;
+               rdfs:range xsd:decimal .
+
+
+###  https://github.com/mbeclawski/cars-ontology#hasMPG
+:hasMPG rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Car .
+
+
+###  https://github.com/mbeclawski/cars-ontology#hasModelYear
+:hasModelYear rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :Car ;
+              rdfs:range xsd:integer .
+
+
+###  https://github.com/mbeclawski/cars-ontology#hasNumberOfDoors
+:hasNumberOfDoors rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :Car ;
+                  rdfs:range xsd:integer .
+
+
+###  https://github.com/mbeclawski/cars-ontology#hasNumberOfSeats
+:hasNumberOfSeats rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf owl:topDataProperty ;
+                  rdfs:domain :Car ;
+                  rdfs:range xsd:integer .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://github.com/mbeclawski/cars-ontology#Battery
+:Battery rdf:type owl:Class ;
+         rdfs:subClassOf :CarEngine .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Brand
+:Brand rdf:type owl:Class .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Car
+:Car rdf:type owl:Class ;
+     rdfs:subClassOf [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasNumberOfDoors ;
+                       owl:someValuesFrom xsd:integer
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasNumberOfSeats ;
+                       owl:someValuesFrom xsd:integer
+                     ] .
+
+
+###  https://github.com/mbeclawski/cars-ontology#CarBody
+:CarBody rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Class ;
+                               owl:oneOf ( :Coupe
+                                           :MiniVan
+                                           :PickupTruck
+                                           :SUV
+                                           :Sedan
+                                         )
+                             ] .
+
+
+###  https://github.com/mbeclawski/cars-ontology#CarEngine
+:CarEngine rdf:type owl:Class .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Combustion
+:Combustion rdf:type owl:Class ;
+            rdfs:subClassOf :CarEngine .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Coupe
+:Coupe rdf:type owl:Class ;
+       owl:equivalentClass [ owl:intersectionOf ( :Car
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :hasNumberOfDoors ;
+                                                    owl:hasValue 2
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] ;
+       rdfs:subClassOf :Car .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Fast
+:Fast rdf:type owl:Class ;
+      rdfs:subClassOf :Car .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Hatchback
+:Hatchback rdf:type owl:Class ;
+           rdfs:subClassOf :Car ,
+                           [ owl:intersectionOf ( :Car
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :hasNumberOfDoors ;
+                                                    owl:hasValue 5
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Hybrid
+:Hybrid rdf:type owl:Class ;
+        rdfs:subClassOf :CarEngine .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Hydrogen
+:Hydrogen rdf:type owl:Class ;
+          rdfs:subClassOf :CarEngine .
+
+
+###  https://github.com/mbeclawski/cars-ontology#MPG
+:MPG rdf:type owl:Class .
+
+
+###  https://github.com/mbeclawski/cars-ontology#MiniVan
+:MiniVan rdf:type owl:Class ;
+         rdfs:subClassOf :Car .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Model
+:Model rdf:type owl:Class .
+
+
+###  https://github.com/mbeclawski/cars-ontology#PickupTruck
+:PickupTruck rdf:type owl:Class ;
+             rdfs:subClassOf :Car .
+
+
+###  https://github.com/mbeclawski/cars-ontology#SUV
+:SUV rdf:type owl:Class ;
+     owl:equivalentClass [ owl:intersectionOf ( :Car
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :hasNumberOfDoors ;
+                                                  owl:hasValue 5
+                                                ]
+                                              ) ;
+                           rdf:type owl:Class
+                         ] ;
+     rdfs:subClassOf :Car .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Sedan
+:Sedan rdf:type owl:Class ;
+       rdfs:subClassOf [ owl:intersectionOf ( :Car
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :hasNumberOfDoors ;
+                                                owl:hasValue 4
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
+                       ] .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Sports
+:Sports rdf:type owl:Class ;
+        rdfs:subClassOf :Car .
+
+
+###  https://github.com/mbeclawski/cars-ontology#10Cylinder
+<https://github.com/mbeclawski/cars-ontology#10Cylinder> rdf:type owl:Class ;
+                                                         rdfs:subClassOf :Combustion .
+
+
+###  https://github.com/mbeclawski/cars-ontology#4Cylinder
+<https://github.com/mbeclawski/cars-ontology#4Cylinder> rdf:type owl:Class ;
+                                                        rdfs:subClassOf :Combustion .
+
+
+###  https://github.com/mbeclawski/cars-ontology#6Cylinder
+<https://github.com/mbeclawski/cars-ontology#6Cylinder> rdf:type owl:Class ;
+                                                        rdfs:subClassOf :Combustion .
+
+
+###  https://github.com/mbeclawski/cars-ontology#8Cylinder
+<https://github.com/mbeclawski/cars-ontology#8Cylinder> rdf:type owl:Class ;
+                                                        rdfs:subClassOf :Combustion .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://github.com/mbeclawski/cars-ontology#Acura
+:Acura rdf:type owl:NamedIndividual ,
+                :Brand .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Cadillac
+:Cadillac rdf:type owl:NamedIndividual ,
+                   :Brand .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Car1
+:Car1 rdf:type owl:NamedIndividual ;
+      :hasBrand :Infinity .
+
+
+###  https://github.com/mbeclawski/cars-ontology#City
+:City rdf:type owl:NamedIndividual ,
+               :MPG .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Coupe
+:Coupe rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Fiat
+:Fiat rdf:type owl:NamedIndividual ,
+               :Brand .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Ford
+:Ford rdf:type owl:NamedIndividual ,
+               :Brand .
+
+
+###  https://github.com/mbeclawski/cars-ontology#GMC
+:GMC rdf:type owl:NamedIndividual ,
+              :Brand .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Highway
+:Highway rdf:type owl:NamedIndividual ,
+                  :MPG .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Honda
+:Honda rdf:type owl:NamedIndividual ,
+                :Brand .
+
+
+###  https://github.com/mbeclawski/cars-ontology#HondaCRV1
+:HondaCRV1 rdf:type owl:NamedIndividual ;
+           :hasBrand :Honda ;
+           :hasNumberOfDoors 5 .
+
+
+###  https://github.com/mbeclawski/cars-ontology#HondaCivicCoupe1
+:HondaCivicCoupe1 rdf:type owl:NamedIndividual ;
+                  :hasBrand :Honda ;
+                  :hasEngineDisplacement 1.6 ;
+                  :hasNumberOfDoors 2 .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Hyundai
+:Hyundai rdf:type owl:NamedIndividual ,
+                  :Brand .
+
+
+###  https://github.com/mbeclawski/cars-ontology#I4
+:I4 rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Infinity
+:Infinity rdf:type owl:NamedIndividual ,
+                   :Brand .
+
+
+###  https://github.com/mbeclawski/cars-ontology#MercedesBenz
+:MercedesBenz rdf:type owl:NamedIndividual ,
+                       :Brand .
+
+
+###  https://github.com/mbeclawski/cars-ontology#MiniVan
+:MiniVan rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Nissan
+:Nissan rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/mbeclawski/cars-ontology#PickupTruck
+:PickupTruck rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/mbeclawski/cars-ontology#SUV
+:SUV rdf:type owl:NamedIndividual .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Sedan
+:Sedan rdf:type owl:NamedIndividual ,
+                :CarBody .
+
+
+###  https://github.com/mbeclawski/cars-ontology#Toyota
+:Toyota rdf:type owl:NamedIndividual ,
+                 :Brand .
+
+
+###  https://github.com/mbeclawski/cars-ontology#V6
+:V6 rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Battery
+                :Combustion
+                :Hybrid
+                :Hydrogen
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Car
+                :CarBody
+                :CarEngine
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
