@@ -1,18 +1,18 @@
-@prefix : <https://github.com/mbeclawski/cars-ontology#> .
+@prefix : <http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <https://github.com/mbeclawski/cars-ontology> .
+@base <http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars> .
 
-<https://github.com/mbeclawski/cars-ontology> rdf:type owl:Ontology .
+<http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars> rdf:type owl:Ontology .
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  https://github.com/mbeclawski/cars-ontology#hasBodyType
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasBodyType
 :hasBodyType rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
              rdf:type owl:FunctionalProperty ;
@@ -20,34 +20,42 @@
              rdfs:range :CarBody .
 
 
-###  https://github.com/mbeclawski/cars-ontology#hasBrand
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasBrand
 :hasBrand rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty ;
+          owl:inverseOf :isBrandOf ;
           rdf:type owl:FunctionalProperty ;
           rdfs:domain :Car ;
           rdfs:range :Brand .
 
 
-###  https://github.com/mbeclawski/cars-ontology#hasEngine
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasEngine
 :hasEngine rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf owl:topObjectProperty ;
            rdf:type owl:FunctionalProperty ;
            rdfs:domain :Car ;
-           rdfs:range :CarEngine .
+           rdfs:range :CarEngineType .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#isBrandOf
+:isBrandOf rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain :Brand ;
+           rdfs:range :Car .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  https://github.com/mbeclawski/cars-ontology#hasCityMPG
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasCityMPG
 :hasCityMPG rdf:type owl:DatatypeProperty ;
             rdfs:subPropertyOf :hasMPG ;
             rdf:type owl:FunctionalProperty ;
             rdfs:range xsd:decimal .
 
 
-###  https://github.com/mbeclawski/cars-ontology#hasDisplacement
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasDisplacement
 :hasDisplacement rdf:type owl:DatatypeProperty ;
                  rdfs:domain [ rdf:type owl:Class ;
                                owl:unionOf ( :Combustion
@@ -57,62 +65,83 @@
                  rdfs:range xsd:double .
 
 
-###  https://github.com/mbeclawski/cars-ontology#hasEngineDisplacement
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasEngineDisplacement
 :hasEngineDisplacement rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf owl:topDataProperty ;
                        rdfs:domain :Car ;
                        rdfs:range xsd:decimal .
 
 
-###  https://github.com/mbeclawski/cars-ontology#hasHighwayMPG
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasHighwayMPG
 :hasHighwayMPG rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf :hasMPG ;
                rdf:type owl:FunctionalProperty ;
                rdfs:range xsd:decimal .
 
 
-###  https://github.com/mbeclawski/cars-ontology#hasMPG
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasMPG
 :hasMPG rdf:type owl:DatatypeProperty ;
         rdfs:domain :Car .
 
 
-###  https://github.com/mbeclawski/cars-ontology#hasModelYear
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasMileage
+:hasMileage rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Car ;
+            rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasModelYear
 :hasModelYear rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf owl:topDataProperty ;
               rdfs:domain :Car ;
               rdfs:range xsd:integer .
 
 
-###  https://github.com/mbeclawski/cars-ontology#hasNumberOfDoors
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasNumberOfDoors
 :hasNumberOfDoors rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf owl:topDataProperty ;
                   rdfs:domain :Car ;
                   rdfs:range xsd:integer .
 
 
-###  https://github.com/mbeclawski/cars-ontology#hasNumberOfSeats
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasNumberOfSeats
 :hasNumberOfSeats rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf owl:topDataProperty ;
                   rdfs:domain :Car ;
                   rdfs:range xsd:integer .
 
 
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasPrice
+:hasPrice rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Car ;
+          rdfs:range xsd:decimal .
+
+
 #################################################################
 #    Classes
 #################################################################
 
-###  https://github.com/mbeclawski/cars-ontology#Battery
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Battery
 :Battery rdf:type owl:Class ;
-         rdfs:subClassOf :CarEngine .
+         rdfs:subClassOf :CarEngineType .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Brand
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Brand
 :Brand rdf:type owl:Class .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Car
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Car
 :Car rdf:type owl:Class ;
      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasBodyType ;
+                       owl:someValuesFrom :CarBody
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :hasEngine ;
+                       owl:someValuesFrom :CarEngineType
+                     ] ,
+                     [ rdf:type owl:Restriction ;
                        owl:onProperty :hasNumberOfDoors ;
                        owl:someValuesFrom xsd:integer
                      ] ,
@@ -122,7 +151,7 @@
                      ] .
 
 
-###  https://github.com/mbeclawski/cars-ontology#CarBody
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#CarBody
 :CarBody rdf:type owl:Class ;
          owl:equivalentClass [ rdf:type owl:Class ;
                                owl:oneOf ( :Coupe
@@ -134,16 +163,16 @@
                              ] .
 
 
-###  https://github.com/mbeclawski/cars-ontology#CarEngine
-:CarEngine rdf:type owl:Class .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#CarEngineType
+:CarEngineType rdf:type owl:Class .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Combustion
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Combustion
 :Combustion rdf:type owl:Class ;
-            rdfs:subClassOf :CarEngine .
+            rdfs:subClassOf :CarEngineType .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Coupe
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Coupe
 :Coupe rdf:type owl:Class ;
        owl:equivalentClass [ owl:intersectionOf ( :Car
                                                   [ rdf:type owl:Restriction ;
@@ -156,53 +185,93 @@
        rdfs:subClassOf :Car .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Fast
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Efficiency
+:Efficiency rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Electric
+:Electric rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( :Car
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hasEngine ;
+                                                       owl:allValuesFrom :Battery
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Fast
 :Fast rdf:type owl:Class ;
       rdfs:subClassOf :Car .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Hatchback
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Hatchback
 :Hatchback rdf:type owl:Class ;
-           rdfs:subClassOf :Car ,
-                           [ owl:intersectionOf ( :Car
-                                                  [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :hasNumberOfDoors ;
-                                                    owl:hasValue 5
+           rdfs:subClassOf [ owl:intersectionOf ( :Car
+                                                  [ rdf:type owl:Class ;
+                                                    owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :hasNumberOfDoors ;
+                                                                    owl:hasValue 3
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :hasNumberOfDoors ;
+                                                                    owl:hasValue 5
+                                                                  ]
+                                                                )
                                                   ]
                                                 ) ;
                              rdf:type owl:Class
                            ] .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Hybrid
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Hybrid
 :Hybrid rdf:type owl:Class ;
-        rdfs:subClassOf :CarEngine .
+        rdfs:subClassOf :CarEngineType .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Hydrogen
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Hydrogen
 :Hydrogen rdf:type owl:Class ;
-          rdfs:subClassOf :CarEngine .
+          rdfs:subClassOf :CarEngineType .
 
 
-###  https://github.com/mbeclawski/cars-ontology#MPG
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#MPG
 :MPG rdf:type owl:Class .
 
 
-###  https://github.com/mbeclawski/cars-ontology#MiniVan
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#MiniVan
 :MiniVan rdf:type owl:Class ;
          rdfs:subClassOf :Car .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Model
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Model
 :Model rdf:type owl:Class .
 
 
-###  https://github.com/mbeclawski/cars-ontology#PickupTruck
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#New
+:New rdf:type owl:Class ;
+     owl:equivalentClass [ owl:intersectionOf ( :Car
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :hasMileage ;
+                                                  owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                       owl:onDatatype xsd:integer ;
+                                                                       owl:withRestrictions ( [ xsd:maxInclusive 100
+                                                                                              ]
+                                                                                            )
+                                                                     ]
+                                                ]
+                                              ) ;
+                           rdf:type owl:Class
+                         ] ;
+     rdfs:subClassOf :Car .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#PickupTruck
 :PickupTruck rdf:type owl:Class ;
              rdfs:subClassOf :Car .
 
 
-###  https://github.com/mbeclawski/cars-ontology#SUV
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#SUV
 :SUV rdf:type owl:Class ;
      owl:equivalentClass [ owl:intersectionOf ( :Car
                                                 [ rdf:type owl:Restriction ;
@@ -215,7 +284,7 @@
      rdfs:subClassOf :Car .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Sedan
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Sedan
 :Sedan rdf:type owl:Class ;
        rdfs:subClassOf [ owl:intersectionOf ( :Car
                                               [ rdf:type owl:Restriction ;
@@ -227,144 +296,223 @@
                        ] .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Sports
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Sports
 :Sports rdf:type owl:Class ;
         rdfs:subClassOf :Car .
 
 
-###  https://github.com/mbeclawski/cars-ontology#10Cylinder
-<https://github.com/mbeclawski/cars-ontology#10Cylinder> rdf:type owl:Class ;
-                                                         rdfs:subClassOf :Combustion .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#TeslaCar
+:TeslaCar rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( :Electric
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hasBrand ;
+                                                       owl:hasValue :Tesla
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:subClassOf :Electric .
 
 
-###  https://github.com/mbeclawski/cars-ontology#4Cylinder
-<https://github.com/mbeclawski/cars-ontology#4Cylinder> rdf:type owl:Class ;
-                                                        rdfs:subClassOf :Combustion .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#10Cylinder
+<http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#10Cylinder> rdf:type owl:Class ;
+                                                                             rdfs:subClassOf :Combustion .
 
 
-###  https://github.com/mbeclawski/cars-ontology#6Cylinder
-<https://github.com/mbeclawski/cars-ontology#6Cylinder> rdf:type owl:Class ;
-                                                        rdfs:subClassOf :Combustion .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#4Cylinder
+<http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#4Cylinder> rdf:type owl:Class ;
+                                                                            rdfs:subClassOf :Combustion .
 
 
-###  https://github.com/mbeclawski/cars-ontology#8Cylinder
-<https://github.com/mbeclawski/cars-ontology#8Cylinder> rdf:type owl:Class ;
-                                                        rdfs:subClassOf :Combustion .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#6Cylinder
+<http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#6Cylinder> rdf:type owl:Class ;
+                                                                            rdfs:subClassOf :Combustion .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#8Cylinder
+<http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#8Cylinder> rdf:type owl:Class ;
+                                                                            rdfs:subClassOf :Combustion .
 
 
 #################################################################
 #    Individuals
 #################################################################
 
-###  https://github.com/mbeclawski/cars-ontology#Acura
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Acura
 :Acura rdf:type owl:NamedIndividual ,
                 :Brand .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Cadillac
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Cadillac
 :Cadillac rdf:type owl:NamedIndividual ,
                    :Brand .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Car1
-:Car1 rdf:type owl:NamedIndividual ;
-      :hasBrand :Infinity .
-
-
-###  https://github.com/mbeclawski/cars-ontology#City
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#City
 :City rdf:type owl:NamedIndividual ,
                :MPG .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Coupe
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Coupe
 :Coupe rdf:type owl:NamedIndividual .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Fiat
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Fiat
 :Fiat rdf:type owl:NamedIndividual ,
                :Brand .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Ford
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Ford
 :Ford rdf:type owl:NamedIndividual ,
                :Brand .
 
 
-###  https://github.com/mbeclawski/cars-ontology#GMC
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#GMC
 :GMC rdf:type owl:NamedIndividual ,
               :Brand .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Highway
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Highway
 :Highway rdf:type owl:NamedIndividual ,
                   :MPG .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Honda
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Honda
 :Honda rdf:type owl:NamedIndividual ,
                 :Brand .
 
 
-###  https://github.com/mbeclawski/cars-ontology#HondaCRV1
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#HondaCRV1
 :HondaCRV1 rdf:type owl:NamedIndividual ;
            :hasBrand :Honda ;
-           :hasNumberOfDoors 5 .
+           :hasModelYear "2018"^^xsd:int ;
+           :hasNumberOfDoors 5 ;
+           :hasPrice 10000 .
 
 
-###  https://github.com/mbeclawski/cars-ontology#HondaCivicCoupe1
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#HondaCivicCoupe1
 :HondaCivicCoupe1 rdf:type owl:NamedIndividual ;
                   :hasBrand :Honda ;
                   :hasEngineDisplacement 1.6 ;
+                  :hasModelYear "2016"^^xsd:int ;
                   :hasNumberOfDoors 2 .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Hyundai
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Hyundai
 :Hyundai rdf:type owl:NamedIndividual ,
                   :Brand .
 
 
-###  https://github.com/mbeclawski/cars-ontology#I4
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#I4
 :I4 rdf:type owl:NamedIndividual .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Infinity
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Infinity
 :Infinity rdf:type owl:NamedIndividual ,
                    :Brand .
 
 
-###  https://github.com/mbeclawski/cars-ontology#MercedesBenz
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#InfinityQ35-1
+:InfinityQ35-1 rdf:type owl:NamedIndividual ;
+               :hasBrand :Infinity .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#InfinityQ35-2
+:InfinityQ35-2 rdf:type owl:NamedIndividual ;
+               :hasBrand :Infinity ;
+               :hasModelYear "2016"^^xsd:int ;
+               :hasPrice 12999 .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#InfinityQ45
+:InfinityQ45 rdf:type owl:NamedIndividual ;
+             :hasBrand :Infinity .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#MercedesBenz
 :MercedesBenz rdf:type owl:NamedIndividual ,
                        :Brand .
 
 
-###  https://github.com/mbeclawski/cars-ontology#MiniVan
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#MiniVan
 :MiniVan rdf:type owl:NamedIndividual .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Nissan
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Model3-1
+:Model3-1 rdf:type owl:NamedIndividual ;
+          :hasBrand :Tesla ;
+          :hasEngine <http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#82kWh> .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#ModelX1
+:ModelX1 rdf:type owl:NamedIndividual ;
+         :hasBrand :Tesla ;
+         :hasMileage "56"^^xsd:int .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#ModelY1
+:ModelY1 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Nissan
 :Nissan rdf:type owl:NamedIndividual .
 
 
-###  https://github.com/mbeclawski/cars-ontology#PickupTruck
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#NissanAltima1
+:NissanAltima1 rdf:type owl:NamedIndividual ;
+               :hasBrand :Nissan .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#NissanAltima2
+:NissanAltima2 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#PickupTruck
 :PickupTruck rdf:type owl:NamedIndividual .
 
 
-###  https://github.com/mbeclawski/cars-ontology#SUV
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Roadster1
+:Roadster1 rdf:type owl:NamedIndividual ;
+           :hasBrand :Tesla ;
+           :hasNumberOfDoors "2"^^xsd:int .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#SUV
 :SUV rdf:type owl:NamedIndividual .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Sedan
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Sedan
 :Sedan rdf:type owl:NamedIndividual ,
                 :CarBody .
 
 
-###  https://github.com/mbeclawski/cars-ontology#Toyota
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Tesla
+:Tesla rdf:type owl:NamedIndividual ,
+                :Brand .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Toyota
 :Toyota rdf:type owl:NamedIndividual ,
                  :Brand .
 
 
-###  https://github.com/mbeclawski/cars-ontology#V6
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#V6
 :V6 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#100kWh
+<http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#100kWh> rdf:type owl:NamedIndividual ,
+                                                                                  :Battery .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#82kWh
+<http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#82kWh> rdf:type owl:NamedIndividual ,
+                                                                                 :Battery .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#85kWh
+<http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#85kWh> rdf:type owl:NamedIndividual ,
+                                                                                 :Battery .
 
 
 #################################################################
@@ -381,9 +529,20 @@
 
 
 [ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Brand
+                :Car
+                :CarEngineType
+                :Efficiency
+                :MPG
+                :Model
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Car
                 :CarBody
-                :CarEngine
+                :CarEngineType
               )
 ] .
 
