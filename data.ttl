@@ -16,7 +16,7 @@
 :hasBodyType rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
              rdf:type owl:FunctionalProperty ;
-             rdfs:domain :Car ;
+             rdfs:domain :Model ;
              rdfs:range :CarBody ,
                         [ rdf:type owl:Class ;
                           owl:oneOf ( :CoupeBody
@@ -41,7 +41,7 @@
 :hasEngine rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf owl:topObjectProperty ;
            rdf:type owl:FunctionalProperty ;
-           rdfs:domain :Car ;
+           rdfs:domain :Model ;
            rdfs:range :CarEngineType .
 
 
@@ -49,7 +49,9 @@
 :hasModel rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty ;
           owl:inverseOf :isModelOf ;
-          rdf:type owl:FunctionalProperty .
+          rdf:type owl:FunctionalProperty ;
+          rdfs:domain :Car ;
+          rdfs:range :Model .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#isBrandOf
@@ -95,13 +97,14 @@
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasColor
 :hasColor rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Car ;
           rdfs:range xsd:string .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasCountryOfOrigin
 :hasCountryOfOrigin rdf:type owl:DatatypeProperty ;
                     rdfs:subPropertyOf owl:topDataProperty ;
-                    rdfs:domain :Car ;
+                    rdfs:domain :Model ;
                     rdfs:range xsd:string .
 
 
@@ -119,29 +122,14 @@
 :hasEngineDisplacement rdf:type owl:DatatypeProperty ;
                        rdfs:subPropertyOf owl:topDataProperty ;
                        rdfs:domain :Car ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :hasBodyType ;
-                                     owl:someValuesFrom :CarBody
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :hasEngine ;
-                                     owl:someValuesFrom :CarEngineType
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :hasNumberOfDoors ;
-                                     owl:someValuesFrom xsd:integer
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :hasNumberOfSeats ;
-                                     owl:someValuesFrom xsd:integer
-                                   ] ;
+                                   :Model ;
                        rdfs:range xsd:decimal .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasGroundClearanceInches
 :hasGroundClearanceInches rdf:type owl:DatatypeProperty ;
                           rdfs:subPropertyOf owl:topDataProperty ;
-                          rdfs:domain :Car ;
+                          rdfs:domain :Model ;
                           rdfs:range xsd:decimal .
 
 
@@ -172,142 +160,46 @@
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasLength
 :hasLength rdf:type owl:DatatypeProperty ;
            rdfs:subPropertyOf owl:topDataProperty ;
-           rdfs:domain :Car ;
+           rdfs:domain :Model ;
            rdfs:range xsd:integer .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasMPG
 :hasMPG rdf:type owl:DatatypeProperty ;
-        rdfs:domain :Car ,
-                    [ rdf:type owl:Restriction ;
-                      owl:onProperty :hasBodyType ;
-                      owl:someValuesFrom :CarBody
-                    ] ,
-                    [ rdf:type owl:Restriction ;
-                      owl:onProperty :hasEngine ;
-                      owl:someValuesFrom :CarEngineType
-                    ] ,
-                    [ rdf:type owl:Restriction ;
-                      owl:onProperty :hasNumberOfDoors ;
-                      owl:someValuesFrom xsd:integer
-                    ] ,
-                    [ rdf:type owl:Restriction ;
-                      owl:onProperty :hasNumberOfSeats ;
-                      owl:someValuesFrom xsd:integer
-                    ] .
+        rdfs:domain :Model .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasMileage
 :hasMileage rdf:type owl:DatatypeProperty ;
-            rdfs:domain :Car ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasBodyType ;
-                          owl:someValuesFrom :CarBody
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasEngine ;
-                          owl:someValuesFrom :CarEngineType
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasNumberOfDoors ;
-                          owl:someValuesFrom xsd:integer
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasNumberOfSeats ;
-                          owl:someValuesFrom xsd:integer
-                        ] ;
+            rdfs:domain :Car ;
             rdfs:range xsd:integer .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasModelYear
 :hasModelYear rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf owl:topDataProperty ;
-              rdfs:domain :Car ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasBodyType ;
-                            owl:someValuesFrom :CarBody
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasEngine ;
-                            owl:someValuesFrom :CarEngineType
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasNumberOfDoors ;
-                            owl:someValuesFrom xsd:integer
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty :hasNumberOfSeats ;
-                            owl:someValuesFrom xsd:integer
-                          ] ;
+              rdfs:domain :Car ;
               rdfs:range xsd:integer .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasNumberOfDoors
 :hasNumberOfDoors rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf owl:topDataProperty ;
-                  rdfs:domain :Car ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasBodyType ;
-                                owl:someValuesFrom :CarBody
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasEngine ;
-                                owl:someValuesFrom :CarEngineType
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasNumberOfDoors ;
-                                owl:someValuesFrom xsd:integer
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasNumberOfSeats ;
-                                owl:someValuesFrom xsd:integer
-                              ] ;
+                  rdfs:domain :Model ;
                   rdfs:range xsd:integer .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasNumberOfSeats
 :hasNumberOfSeats rdf:type owl:DatatypeProperty ;
                   rdfs:subPropertyOf owl:topDataProperty ;
-                  rdfs:domain :Car ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasBodyType ;
-                                owl:someValuesFrom :CarBody
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasEngine ;
-                                owl:someValuesFrom :CarEngineType
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasNumberOfDoors ;
-                                owl:someValuesFrom xsd:integer
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasNumberOfSeats ;
-                                owl:someValuesFrom xsd:integer
-                              ] ;
+                  rdfs:domain :Model ;
                   rdfs:range xsd:integer .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#hasPrice
 :hasPrice rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty ;
-          rdfs:domain :Car ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasBodyType ;
-                        owl:someValuesFrom :CarBody
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasEngine ;
-                        owl:someValuesFrom :CarEngineType
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasNumberOfDoors ;
-                        owl:someValuesFrom xsd:integer
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasNumberOfSeats ;
-                        owl:someValuesFrom xsd:integer
-                      ] ;
+          rdfs:domain :Car ;
           rdfs:range xsd:decimal .
 
 
@@ -315,30 +207,16 @@
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Acura
-:Acura rdf:type owl:Class ;
-       rdfs:subClassOf :Honda .
-
-
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Battery
 :Battery rdf:type owl:Class ;
          rdfs:subClassOf :CarEngineType .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Cadillac
-:Cadillac rdf:type owl:Class ;
-          rdfs:subClassOf :CarBrand .
-
-
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Car
 :Car rdf:type owl:Class ;
      rdfs:subClassOf [ rdf:type owl:Restriction ;
-                       owl:onProperty :hasBodyType ;
-                       owl:someValuesFrom :CarBody
-                     ] ,
-                     [ rdf:type owl:Restriction ;
-                       owl:onProperty :hasEngine ;
-                       owl:someValuesFrom :CarEngineType
+                       owl:onProperty :hasModel ;
+                       owl:someValuesFrom :Model
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :hasGroundClearanceInches ;
@@ -396,23 +274,14 @@
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Coupe
 :Coupe rdf:type owl:Class ;
-       owl:equivalentClass [ owl:intersectionOf ( :Car
+       owl:equivalentClass [ owl:intersectionOf ( :Model
                                                   [ rdf:type owl:Restriction ;
                                                     owl:onProperty :hasNumberOfDoors ;
                                                     owl:hasValue 2
                                                   ]
                                                 ) ;
                              rdf:type owl:Class
-                           ] ;
-       rdfs:subClassOf :Car ,
-                       [ owl:intersectionOf ( :Car
-                                              [ rdf:type owl:Restriction ;
-                                                owl:onProperty :hasNumberOfDoors ;
-                                                owl:hasValue 2
-                                              ]
-                                            ) ;
-                         rdf:type owl:Class
-                       ] .
+                           ] .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Efficiency
@@ -421,7 +290,7 @@
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Electric
 :Electric rdf:type owl:Class ;
-          owl:equivalentClass [ owl:intersectionOf ( :Car
+          owl:equivalentClass [ owl:intersectionOf ( :Model
                                                      [ rdf:type owl:Class ;
                                                        owl:unionOf ( [ rdf:type owl:Restriction ;
                                                                        owl:onProperty :hasEngine ;
@@ -429,28 +298,13 @@
                                                                      ]
                                                                      [ rdf:type owl:Restriction ;
                                                                        owl:onProperty :hasBrand ;
-                                                                       owl:hasValue :Tesla
+                                                                       owl:hasValue :TeslaBrand
                                                                      ]
                                                                    )
                                                      ]
                                                    ) ;
                                 rdf:type owl:Class
-                              ] ;
-          rdfs:subClassOf [ owl:intersectionOf ( :Car
-                                                 [ rdf:type owl:Class ;
-                                                   owl:unionOf ( [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty :hasEngine ;
-                                                                   owl:allValuesFrom :Battery
-                                                                 ]
-                                                                 [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty :hasBrand ;
-                                                                   owl:hasValue :Tesla
-                                                                 ]
-                                                               )
-                                                 ]
-                                               ) ;
-                            rdf:type owl:Class
-                          ] .
+                              ] .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Fast
@@ -474,14 +328,9 @@
                       ] .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Ford
-:Ford rdf:type owl:Class ;
-      rdfs:subClassOf :CarBrand .
-
-
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Hatchback
 :Hatchback rdf:type owl:Class ;
-           owl:equivalentClass [ owl:intersectionOf ( :Car
+           owl:equivalentClass [ owl:intersectionOf ( :Model
                                                       [ rdf:type owl:Class ;
                                                         owl:unionOf ( [ rdf:type owl:Restriction ;
                                                                         owl:onProperty :hasNumberOfDoors ;
@@ -504,29 +353,7 @@
                                                       ]
                                                     ) ;
                                  rdf:type owl:Class
-                               ] ;
-           rdfs:subClassOf :Car ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :hasBodyType ;
-                             owl:someValuesFrom :CarBody
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :hasEngine ;
-                             owl:someValuesFrom :CarEngineType
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :hasNumberOfDoors ;
-                             owl:someValuesFrom xsd:integer
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :hasNumberOfSeats ;
-                             owl:someValuesFrom xsd:integer
-                           ] .
-
-
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Honda
-:Honda rdf:type owl:Class ;
-       rdfs:subClassOf :CarBrand .
+                               ] .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Hybrid
@@ -544,44 +371,12 @@
           rdfs:subClassOf :CarEngineType .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Infinity
-:Infinity rdf:type owl:Class ;
-          rdfs:subClassOf :Nissan .
-
-
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#MPG
 :MPG rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Mercedes
-:Mercedes rdf:type owl:Class ;
-          rdfs:subClassOf :CarBrand .
-
-
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#MiniVan
-:MiniVan rdf:type owl:Class ;
-         rdfs:subClassOf :Car ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasBodyType ;
-                           owl:someValuesFrom :CarBody
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasEngine ;
-                           owl:someValuesFrom :CarEngineType
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasNumberOfDoors ;
-                           owl:someValuesFrom xsd:integer
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :hasNumberOfSeats ;
-                           owl:someValuesFrom xsd:integer
-                         ] .
-
-
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Model
-:Model rdf:type owl:Class ;
-       rdfs:subClassOf :Car .
+:Model rdf:type owl:Class .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#New
@@ -615,11 +410,6 @@
                      ] .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Nissan
-:Nissan rdf:type owl:Class ;
-        rdfs:subClassOf :CarBrand .
-
-
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#PickupTruck
 :PickupTruck rdf:type owl:Class ;
              rdfs:subClassOf :Car ,
@@ -644,7 +434,7 @@
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#SUV
 :SUV rdf:type owl:Class ;
      owl:equivalentClass [ rdf:type owl:Class ;
-                           owl:unionOf ( [ owl:intersectionOf ( :Car
+                           owl:unionOf ( [ owl:intersectionOf ( :Model
                                                                 [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                                                          owl:onProperty :hasGroundClearanceInches ;
                                                                                          owl:someValuesFrom [ rdf:type rdfs:Datatype ;
@@ -669,50 +459,26 @@
                                            owl:hasValue :SUVBody
                                          ]
                                        )
-                         ] ;
-     rdfs:subClassOf :Car ,
-                     [ rdf:type owl:Restriction ;
-                       owl:onProperty :hasGroundClearanceInches ;
-                       owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                            owl:onDatatype xsd:decimal ;
-                                            owl:withRestrictions ( [ xsd:minInclusive 6
-                                                                   ]
-                                                                 )
-                                          ]
-                     ] .
+                         ] .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Sedan
 :Sedan rdf:type owl:Class ;
-       rdfs:subClassOf :Car ,
-                       [ owl:intersectionOf ( :Car
-                                              [ rdf:type owl:Restriction ;
-                                                owl:onProperty :hasNumberOfDoors ;
-                                                owl:hasValue 4
-                                              ]
-                                            ) ;
-                         rdf:type owl:Class
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasBodyType ;
-                         owl:someValuesFrom :CarBody
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasEngine ;
-                         owl:someValuesFrom :CarEngineType
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasNumberOfDoors ;
-                         owl:someValuesFrom xsd:integer
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasNumberOfSeats ;
-                         owl:someValuesFrom xsd:integer
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasNumberOfDoors ;
-                         owl:hasValue 4
-                       ] .
+       owl:equivalentClass [ owl:intersectionOf ( :Model
+                                                  [ rdf:type owl:Class ;
+                                                    owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :hasBodyType ;
+                                                                    owl:hasValue :SedanBody
+                                                                  ]
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :hasNumberOfDoors ;
+                                                                    owl:hasValue 4
+                                                                  ]
+                                                                )
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Sports
@@ -736,70 +502,87 @@
                         ] .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Tesla
-:Tesla rdf:type owl:Class ;
-       rdfs:subClassOf :CarBrand .
-
-
 #################################################################
 #    Individuals
 #################################################################
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Accent1
-:Accent1 rdf:type owl:NamedIndividual ;
-         :hasBrand :Hyundai .
+:Accent1 rdf:type owl:NamedIndividual .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Accord
-:Accord rdf:type owl:NamedIndividual ,
-                 :Model ;
-        :hasBodyType :SedanBody ;
-        :hasBrand :Honda .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Accord1
+:Accord1 rdf:type owl:NamedIndividual ;
+         :hasModel :AccordModel .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Acura
-:Acura rdf:type owl:NamedIndividual ;
-       :isBrandOf :TSX .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#AccordModel
+:AccordModel rdf:type owl:NamedIndividual ,
+                      :Model ;
+             :hasBodyType :SedanBody ;
+             :hasBrand :HondaBrand ;
+             :hasNumberOfDoors 4 .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Altima
-:Altima rdf:type owl:NamedIndividual ;
-        :hasBrand :Nissan .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#AcuraBrand
+:AcuraBrand rdf:type owl:NamedIndividual ,
+                     :CarBrand ;
+            :isBrandOf :TSXModel ;
+            rdfs:label "Acura" .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#CClass
-:CClass rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#AltimaModel
+:AltimaModel rdf:type owl:NamedIndividual ;
+             :hasBrand :NissanBrand ;
+             :hasNumberOfDoors 4 .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#CClass1
 :CClass1 rdf:type owl:NamedIndividual ;
-         :hasModel :CClass .
+         :hasModel :CClassModel .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#CRV
-:CRV rdf:type owl:NamedIndividual ,
-              :Model ;
-     :hasModel :CRV .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#CClassModel
+:CClassModel rdf:type owl:NamedIndividual .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Cadillac
-:Cadillac rdf:type owl:NamedIndividual ;
-          :isBrandOf :Escalade .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#CRV1
+:CRV1 rdf:type owl:NamedIndividual ;
+      :hasModel :CRVModel .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Camry
-:Camry rdf:type owl:NamedIndividual ,
-                :Model .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#CRV2
+:CRV2 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#CRVModel
+:CRVModel rdf:type owl:NamedIndividual ,
+                   :Model ;
+          :hasBrand :HondaBrand ;
+          :isModelOf :CRV2 ;
+          :hasNumberOfDoors 5 .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#CadillacBrand
+:CadillacBrand rdf:type owl:NamedIndividual ,
+                        :CarBrand ;
+               :isBrandOf :EscaladeModel ;
+               rdfs:label "Cadillac" .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Camry1
 :Camry1 rdf:type owl:NamedIndividual ;
-        :hasModel :Camry .
+        :hasModel :CamryModel .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Camry2
 :Camry2 rdf:type owl:NamedIndividual ;
-        :hasModel :Camry .
+        :hasModel :CamryModel .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#CamryModel
+:CamryModel rdf:type owl:NamedIndividual ,
+                     :Model ;
+            :hasNumberOfDoors 4 .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#City
@@ -807,52 +590,37 @@
                :MPG .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Civic
-:Civic rdf:type owl:NamedIndividual ,
-                :Model ;
-       :hasModel :Civic .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Civic1
+:Civic1 rdf:type owl:NamedIndividual .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Corolla
-:Corolla rdf:type owl:NamedIndividual ,
-                  :Model .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#CivicModel
+:CivicModel rdf:type owl:NamedIndividual ,
+                     :Model ;
+            :isModelOf :Civic1 ;
+            :hasNumberOfDoors 4 .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Corolla1
 :Corolla1 rdf:type owl:NamedIndividual ,
-                   :Car ,
-                   [ rdf:type owl:Restriction ;
-                     owl:onProperty :hasBodyType ;
-                     owl:someValuesFrom :CarBody
-                   ] ,
-                   [ rdf:type owl:Restriction ;
-                     owl:onProperty :hasEngine ;
-                     owl:someValuesFrom :CarEngineType
-                   ] ,
-                   [ rdf:type owl:Restriction ;
-                     owl:onProperty :hasNumberOfDoors ;
-                     owl:someValuesFrom xsd:integer
-                   ] ,
-                   [ rdf:type owl:Restriction ;
-                     owl:onProperty :hasNumberOfSeats ;
-                     owl:someValuesFrom xsd:integer
-                   ] ,
-                   [ rdf:type owl:Restriction ;
-                     owl:onProperty :hasNumberOfDoors ;
-                     owl:hasValue 4
-                   ] ;
-          :hasModel :Corolla ;
-          :hasNumberOfDoors 4 .
+                   :Car ;
+          :hasModel :CorollaModel .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Corolla2
 :Corolla2 rdf:type owl:NamedIndividual ;
-          :hasModel :Corolla .
+          :hasModel :CorollaModel .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Corolla3
 :Corolla3 rdf:type owl:NamedIndividual ;
-          :hasModel :Corolla .
+          :hasModel :CorollaModel .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#CorollaModel
+:CorollaModel rdf:type owl:NamedIndividual ,
+                       :Model ;
+              :hasNumberOfDoors 4 .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#CoupeBody
@@ -869,60 +637,63 @@
                     ] .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Elantra
-:Elantra rdf:type owl:NamedIndividual ,
-                  :Model ;
-         :hasBrand :Hyundai .
-
-
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Elantra1
 :Elantra1 rdf:type owl:NamedIndividual ;
-          :hasModel :Elantra .
+          :hasModel :ElantraModel .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Escalade
-:Escalade rdf:type owl:NamedIndividual ,
-                   :Model ;
-          :hasModel :Escalade .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#ElantraModel
+:ElantraModel rdf:type owl:NamedIndividual ,
+                       :Model ;
+              :hasBrand :HyundaiBrand ;
+              :hasNumberOfDoors 4 .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Escalade1
 :Escalade1 rdf:type owl:NamedIndividual ;
-           :hasModel :Escalade .
+           :hasModel :EscaladeModel .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Escalade2
 :Escalade2 rdf:type owl:NamedIndividual ;
-           :hasModel :Escalade .
+           :hasModel :EscaladeModel .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Escape
-:Escape rdf:type owl:NamedIndividual ;
-        :hasBrand :Ford ;
-        :isModelOf :Escape1 .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#EscaladeModel
+:EscaladeModel rdf:type owl:NamedIndividual ,
+                        :Model ;
+               :hasBrand :CadillacBrand ;
+               :hasNumberOfDoors 5 .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Escape1
 :Escape1 rdf:type owl:NamedIndividual .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Explorer
-:Explorer rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#EscapeModel
+:EscapeModel rdf:type owl:NamedIndividual ;
+             :hasBrand :FordBrand ;
+             :isModelOf :Escape1 ;
+             :hasNumberOfDoors 5 .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Explorer1
+:Explorer1 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#ExplorerModel
+:ExplorerModel rdf:type owl:NamedIndividual ;
+               :isModelOf :Explorer1 ;
+               :hasNumberOfDoors 5 .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Fiat
 :Fiat rdf:type owl:NamedIndividual .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Fit
-:Fit rdf:type owl:NamedIndividual ,
-              :Model .
-
-
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Fit1
 :Fit1 rdf:type owl:NamedIndividual ;
-      :hasGroundClearanceInches 5.3 ;
-      :hasNumberOfDoors 5 .
+      :hasModel :FitModel .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Fit2
@@ -933,12 +704,28 @@
 :Fit3 rdf:type owl:NamedIndividual .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Ford
-:Ford rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#FitModel
+:FitModel rdf:type owl:NamedIndividual ,
+                   :Model ;
+          :hasBrand :HondaBrand ;
+          :isModelOf :Fit2 ,
+                     :Fit3 ;
+          :hasGroundClearanceInches 5.3 ;
+          :hasNumberOfDoors 5 .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#GMC
-:GMC rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#FordBrand
+:FordBrand rdf:type owl:NamedIndividual ,
+                    :CarBrand ;
+           :isBrandOf :ExplorerModel ;
+           rdfs:label "Ford" .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#GMCBrand
+:GMCBrand rdf:type owl:NamedIndividual ,
+                   :CarBrand ;
+          :isBrandOf :SierraModel ;
+          rdfs:label "GMC" .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Highway
@@ -946,83 +733,30 @@
                   :MPG .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Honda
-:Honda rdf:type owl:NamedIndividual ;
-       :isBrandOf :HondaCRV1 ,
-                  :HondaCivicCoupe1 .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#HondaBrand
+:HondaBrand rdf:type owl:NamedIndividual ,
+                     :CarBrand ;
+            :isBrandOf :CRVModel ,
+                       :CivicModel ;
+            rdfs:label "Honda" .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#HondaCRV1
-:HondaCRV1 rdf:type owl:NamedIndividual ,
-                    :Car ,
-                    [ rdf:type owl:Class ;
-                      owl:unionOf ( [ rdf:type owl:Restriction ;
-                                      owl:onProperty :hasNumberOfDoors ;
-                                      owl:hasValue 3
-                                    ]
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :hasNumberOfDoors ;
-                                      owl:hasValue 5
-                                    ]
-                                  )
-                    ] ,
-                    [ rdf:type owl:Restriction ;
-                      owl:onProperty :hasBodyType ;
-                      owl:someValuesFrom :CarBody
-                    ] ,
-                    [ rdf:type owl:Restriction ;
-                      owl:onProperty :hasEngine ;
-                      owl:someValuesFrom :CarEngineType
-                    ] ,
-                    [ rdf:type owl:Restriction ;
-                      owl:onProperty :hasNumberOfDoors ;
-                      owl:someValuesFrom xsd:integer
-                    ] ,
-                    [ rdf:type owl:Restriction ;
-                      owl:onProperty :hasNumberOfSeats ;
-                      owl:someValuesFrom xsd:integer
-                    ] ,
-                    [ rdf:type owl:Restriction ;
-                      owl:onProperty :hasNumberOfDoors ;
-                      owl:hasValue 5
-                    ] ;
-           :hasBrand :Honda ;
-           :hasModelYear "2018"^^xsd:int ;
-           :hasNumberOfDoors 5 ;
-           :hasPrice 10000 .
+:HondaCRV1 rdf:type owl:NamedIndividual ;
+           :hasModel :CRVModel .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#HondaCivicCoupe1
-:HondaCivicCoupe1 rdf:type owl:NamedIndividual ,
-                           :Car ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :hasBodyType ;
-                             owl:someValuesFrom :CarBody
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :hasEngine ;
-                             owl:someValuesFrom :CarEngineType
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :hasNumberOfDoors ;
-                             owl:someValuesFrom xsd:integer
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :hasNumberOfSeats ;
-                             owl:someValuesFrom xsd:integer
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :hasNumberOfDoors ;
-                             owl:hasValue 2
-                           ] ;
-                  :hasBrand :Honda ;
+:HondaCivicCoupe1 rdf:type owl:NamedIndividual ;
+                  :hasModel :CivicModel ;
                   :hasEngineDisplacement 1.6 ;
-                  :hasModelYear 2016 ;
-                  :hasNumberOfDoors 2 .
+                  :hasModelYear 2016 .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Hyundai
-:Hyundai rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#HyundaiBrand
+:HyundaiBrand rdf:type owl:NamedIndividual ,
+                       :CarBrand ;
+              rdfs:label "Hyundai" .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#I4
@@ -1036,113 +770,66 @@
              ] .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Infinity
-:Infinity rdf:type owl:NamedIndividual ;
-          :isBrandOf :InfinityQ45 ,
-                     :InfinityQ45-1 ,
-                     :InfinityQ45-2 .
-
-
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#InfinityQ45
-:InfinityQ45 rdf:type owl:NamedIndividual ,
-                      :Car ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasBodyType ;
-                        owl:someValuesFrom :CarBody
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasEngine ;
-                        owl:someValuesFrom :CarEngineType
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasNumberOfDoors ;
-                        owl:someValuesFrom xsd:integer
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :hasNumberOfSeats ;
-                        owl:someValuesFrom xsd:integer
-                      ] ;
-             :hasBrand :Infinity .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#InfinityBrand
+:InfinityBrand rdf:type owl:NamedIndividual ;
+               :isBrandOf :InfinityQ45-1 ,
+                          :InfinityQ45-2 ,
+                          :InfinityQ45Model ;
+               rdfs:label "Infinity" .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#InfinityQ45-1
 :InfinityQ45-1 rdf:type owl:NamedIndividual ,
-                        :Car ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasBodyType ;
-                          owl:someValuesFrom :CarBody
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasEngine ;
-                          owl:someValuesFrom :CarEngineType
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasNumberOfDoors ;
-                          owl:someValuesFrom xsd:integer
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasNumberOfSeats ;
-                          owl:someValuesFrom xsd:integer
-                        ] ;
-               :hasBodyType :SedanBody ;
-               :hasBrand :Infinity .
+                        :Car .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#InfinityQ45-2
 :InfinityQ45-2 rdf:type owl:NamedIndividual ,
-                        :Car ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasBodyType ;
-                          owl:someValuesFrom :CarBody
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasEngine ;
-                          owl:someValuesFrom :CarEngineType
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasNumberOfDoors ;
-                          owl:someValuesFrom xsd:integer
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasNumberOfSeats ;
-                          owl:someValuesFrom xsd:integer
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasNumberOfDoors ;
-                          owl:hasValue 4
-                        ] ;
-               :hasBrand :Infinity ;
+                        :Car ;
                :hasModelYear 2016 ;
-               :hasNumberOfDoors 4 ;
                :hasPrice 12999 .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Leaf
-:Leaf rdf:type owl:NamedIndividual ,
-               :Model .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#InfinityQ45Model
+:InfinityQ45Model rdf:type owl:NamedIndividual ;
+                  :hasBrand :InfinityBrand ;
+                  :hasNumberOfDoors 4 .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Leaf1
-:Leaf1 rdf:type owl:NamedIndividual ;
-       :hasBrand :Nissan ;
-       :hasEngine <http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#60kWh> .
+:Leaf1 rdf:type owl:NamedIndividual .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Leaf2
-:Leaf2 rdf:type owl:NamedIndividual ;
-       :hasEngine <http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#60kWh> .
+:Leaf2 rdf:type owl:NamedIndividual .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#MDX
-:MDX rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#LeafModel
+:LeafModel rdf:type owl:NamedIndividual ,
+                    :Model ;
+           :hasBrand :NissanBrand ;
+           :hasEngine <http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#60kWh> ;
+           :isModelOf :Leaf2 ;
+           :hasGroundClearanceInches 5.9 ;
+           :hasNumberOfDoors 5 .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Maxima
-:Maxima rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#MDXModel
+:MDXModel rdf:type owl:NamedIndividual .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#MercedesBenz
-:MercedesBenz rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Maxima1
+:Maxima1 rdf:type owl:NamedIndividual ;
+         :hasModel :MaximaModel .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#MaximaModel
+:MaximaModel rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#MercedesBenzBrand
+:MercedesBenzBrand rdf:type owl:NamedIndividual ,
+                            :CarBrand .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#MiniVanBody
@@ -1159,115 +846,76 @@
                       ] .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Model3
-:Model3 rdf:type owl:NamedIndividual ,
-                 :Model .
-
-
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Model3-1
 :Model3-1 rdf:type owl:NamedIndividual ,
-                   :Car ,
-                   [ rdf:type owl:Restriction ;
-                     owl:onProperty :hasBodyType ;
-                     owl:someValuesFrom :CarBody
-                   ] ,
-                   [ rdf:type owl:Restriction ;
-                     owl:onProperty :hasEngine ;
-                     owl:someValuesFrom :CarEngineType
-                   ] ,
-                   [ rdf:type owl:Restriction ;
-                     owl:onProperty :hasNumberOfDoors ;
-                     owl:someValuesFrom xsd:integer
-                   ] ,
-                   [ rdf:type owl:Restriction ;
-                     owl:onProperty :hasNumberOfSeats ;
-                     owl:someValuesFrom xsd:integer
-                   ] ;
-          :hasBrand :Tesla ;
-          :hasEngine <http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#82kWh> .
+                   :Car ;
+          :hasModel :Model3Model .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#ModelS
-:ModelS rdf:type owl:NamedIndividual ,
-                 :Model .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Model3Model
+:Model3Model rdf:type owl:NamedIndividual ,
+                      :Model ;
+             :hasBrand :TeslaBrand ;
+             :hasEngine <http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#82kWh> ;
+             :hasNumberOfDoors 4 .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#ModelX
-:ModelX rdf:type owl:NamedIndividual ,
-                 :Model .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#ModelSModel
+:ModelSModel rdf:type owl:NamedIndividual ,
+                      :Model ;
+             :hasBrand :TeslaBrand ;
+             :hasNumberOfDoors 4 .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#ModelX1
 :ModelX1 rdf:type owl:NamedIndividual ,
-                  :Car ,
-                  [ rdf:type owl:Restriction ;
-                    owl:onProperty :hasBodyType ;
-                    owl:someValuesFrom :CarBody
-                  ] ,
-                  [ rdf:type owl:Restriction ;
-                    owl:onProperty :hasEngine ;
-                    owl:someValuesFrom :CarEngineType
-                  ] ,
-                  [ rdf:type owl:Restriction ;
-                    owl:onProperty :hasNumberOfDoors ;
-                    owl:someValuesFrom xsd:integer
-                  ] ,
-                  [ rdf:type owl:Restriction ;
-                    owl:onProperty :hasNumberOfSeats ;
-                    owl:someValuesFrom xsd:integer
-                  ] ;
-         :hasBrand :Tesla ;
-         :hasEngine <http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#100kWh> ;
+                  :Car ;
          :hasMileage 56 .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#ModelY
-:ModelY rdf:type owl:NamedIndividual ,
-                 :Model .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#ModelXModel
+:ModelXModel rdf:type owl:NamedIndividual ,
+                      :Model ;
+             :hasEngine <http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#100kWh> ;
+             :isModelOf :ModelX1 ;
+             :hasNumberOfDoors 5 .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#ModelY1
 :ModelY1 rdf:type owl:NamedIndividual ;
-         :hasBrand :Tesla ;
-         :hasGroundClearanceInches 6.6 ;
-         :hasNumberOfDoors 5 .
+         :hasModel :ModelYModel .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#ModelY2
-:ModelY2 rdf:type owl:NamedIndividual ,
-                  :SUV ;
-         :hasBrand :Tesla .
+:ModelY2 rdf:type owl:NamedIndividual ;
+         :hasModel :ModelYModel .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Nissan
-:Nissan rdf:type owl:NamedIndividual ;
-        :isBrandOf :NissanAltima1 .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#ModelYModel
+:ModelYModel rdf:type owl:NamedIndividual ,
+                      :Model ;
+             :hasBrand :TeslaBrand ;
+             :hasGroundClearanceInches 6.6 ;
+             :hasNumberOfDoors 5 .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#NissanAltima1
 :NissanAltima1 rdf:type owl:NamedIndividual ,
-                        :Car ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasBodyType ;
-                          owl:someValuesFrom :CarBody
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasEngine ;
-                          owl:someValuesFrom :CarEngineType
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasNumberOfDoors ;
-                          owl:someValuesFrom xsd:integer
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :hasNumberOfSeats ;
-                          owl:someValuesFrom xsd:integer
-                        ] ;
-               :hasBrand :Nissan .
+                        :Car ;
+               :hasBrand :NissanBrand ;
+               :hasModel :AltimaModel .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#NissanAltima2
-:NissanAltima2 rdf:type owl:NamedIndividual .
+:NissanAltima2 rdf:type owl:NamedIndividual ;
+               :hasModel :AltimaModel .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#NissanBrand
+:NissanBrand rdf:type owl:NamedIndividual ,
+                      :CarBrand ;
+             :isBrandOf :NissanAltima1 ;
+             rdfs:label "Nissan" .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#PickupBody
@@ -1284,41 +932,31 @@
                      ] .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Q45
-:Q45 rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Q45-1
+:Q45-1 rdf:type owl:NamedIndividual .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Q50
-:Q50 rdf:type owl:NamedIndividual ,
-              :Model .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Q45Model
+:Q45Model rdf:type owl:NamedIndividual ;
+          :isModelOf :Q45-1 ;
+          :hasNumberOfDoors 4 .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Q50-1
+:Q50-1 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Q50Model
+:Q50Model rdf:type owl:NamedIndividual ,
+                   :Model ;
+          :isModelOf :Q50-1 ;
+          :hasNumberOfDoors 5 .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Roadster1
 :Roadster1 rdf:type owl:NamedIndividual ,
-                    :Car ,
-                    [ rdf:type owl:Restriction ;
-                      owl:onProperty :hasBodyType ;
-                      owl:someValuesFrom :CarBody
-                    ] ,
-                    [ rdf:type owl:Restriction ;
-                      owl:onProperty :hasEngine ;
-                      owl:someValuesFrom :CarEngineType
-                    ] ,
-                    [ rdf:type owl:Restriction ;
-                      owl:onProperty :hasNumberOfDoors ;
-                      owl:someValuesFrom xsd:integer
-                    ] ,
-                    [ rdf:type owl:Restriction ;
-                      owl:onProperty :hasNumberOfSeats ;
-                      owl:someValuesFrom xsd:integer
-                    ] ,
-                    [ rdf:type owl:Restriction ;
-                      owl:onProperty :hasNumberOfDoors ;
-                      owl:hasValue 2
-                    ] ;
-           :hasBodyType :RoadsterBody ;
-           :hasBrand :Tesla ;
-           :hasNumberOfDoors 2 .
+                    :Car ;
+           :hasModel :RoadsterModel .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#RoadsterBody
@@ -1335,12 +973,21 @@
                        ] .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#SClass
-:SClass rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#RoadsterModel
+:RoadsterModel rdf:type owl:NamedIndividual ;
+               :hasBodyType :RoadsterBody ;
+               :hasBrand :TeslaBrand ;
+               :hasNumberOfDoors 2 .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#SClass1
 :SClass1 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#SClassModel
+:SClassModel rdf:type owl:NamedIndividual ;
+             :isModelOf :SClass1 ;
+             :hasNumberOfDoors 4 .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#SUVBody
@@ -1371,19 +1018,31 @@
                     ] .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#TSX
-:TSX rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Sierra1
+:Sierra1 rdf:type owl:NamedIndividual .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Tesla
-:Tesla rdf:type owl:NamedIndividual ;
-       :isBrandOf :Model3-1 ,
-                  :ModelX1 ,
-                  :Roadster1 .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#SierraModel
+:SierraModel rdf:type owl:NamedIndividual .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#Toyota
-:Toyota rdf:type owl:NamedIndividual .
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#TSXModel
+:TSXModel rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#TeslaBrand
+:TeslaBrand rdf:type owl:NamedIndividual ,
+                     :CarBrand ;
+            :isBrandOf :Model3Model ,
+                       :ModelXModel ,
+                       :RoadsterModel ;
+            rdfs:label "Tesla" .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#ToyotaBrand
+:ToyotaBrand rdf:type owl:NamedIndividual ,
+                      :CarBrand ;
+             rdfs:label "Toyota" .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#V10
@@ -1419,23 +1078,23 @@
              ] .
 
 
-###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#XT5
-:XT5 rdf:type owl:NamedIndividual ,
-              :Model .
-
-
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#XT5-1
-:XT5-1 rdf:type owl:NamedIndividual ;
-       :hasBodyType :SUVBody .
+:XT5-1 rdf:type owl:NamedIndividual .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#XT5-2
-:XT5-2 rdf:type owl:NamedIndividual ;
-       :hasGroundClearanceInches 7.8 .
+:XT5-2 rdf:type owl:NamedIndividual .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#XT5-3
 :XT5-3 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#XT5Model
+:XT5Model rdf:type owl:NamedIndividual ,
+                   :Model ;
+          :hasBodyType :SUVBody ;
+          :hasNumberOfDoors 5 .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#100kWh
@@ -1446,12 +1105,22 @@
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#500L-1
 <http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#500L-1> rdf:type owl:NamedIndividual ;
-                                                                         :hasBrand :Fiat .
+                                                                         :hasModel <http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#500LModel> .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#500LModel
+<http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#500LModel> rdf:type owl:NamedIndividual ;
+                                                                            :hasNumberOfDoors 5 .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#500X-1
 <http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#500X-1> rdf:type owl:NamedIndividual ;
-                                                                         :hasBrand :Fiat .
+                                                                         :hasModel <http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#500XModel> .
+
+
+###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#500XModel
+<http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#500XModel> rdf:type owl:NamedIndividual ;
+                                                                            :hasNumberOfDoors 5 .
 
 
 ###  http://www.semanticweb.org/mbeclawski/ontologies/2021/2/mb-cars#60kWh
@@ -1475,300 +1144,6 @@
 #    General axioms
 #################################################################
 
-[ owl:intersectionOf ( :Car
-                       [ rdf:type owl:Class ;
-                         owl:unionOf ( [ rdf:type owl:Restriction ;
-                                         owl:onProperty :hasEngine ;
-                                         owl:allValuesFrom :Battery
-                                       ]
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :hasBrand ;
-                                         owl:hasValue :Tesla
-                                       ]
-                                     )
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf :Electric
-] .
-
-
-[ owl:intersectionOf ( :Car
-                       [ rdf:type owl:Class ;
-                         owl:unionOf ( [ rdf:type owl:Restriction ;
-                                         owl:onProperty :hasNumberOfDoors ;
-                                         owl:hasValue 3
-                                       ]
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :hasNumberOfDoors ;
-                                         owl:hasValue 5
-                                       ]
-                                     )
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf :Car
-] .
-
-
-[ owl:intersectionOf ( :Car
-                       [ rdf:type owl:Class ;
-                         owl:unionOf ( [ rdf:type owl:Restriction ;
-                                         owl:onProperty :hasNumberOfDoors ;
-                                         owl:hasValue 3
-                                       ]
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :hasNumberOfDoors ;
-                                         owl:hasValue 5
-                                       ]
-                                     )
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf [ rdf:type owl:Class ;
-                    owl:unionOf ( [ rdf:type owl:Restriction ;
-                                    owl:onProperty :hasNumberOfDoors ;
-                                    owl:hasValue 3
-                                  ]
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :hasNumberOfDoors ;
-                                    owl:hasValue 5
-                                  ]
-                                )
-                  ]
-] .
-
-
-[ owl:intersectionOf ( :Car
-                       [ rdf:type owl:Class ;
-                         owl:unionOf ( [ rdf:type owl:Restriction ;
-                                         owl:onProperty :hasNumberOfDoors ;
-                                         owl:hasValue 3
-                                       ]
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :hasNumberOfDoors ;
-                                         owl:hasValue 5
-                                       ]
-                                     )
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf [ rdf:type owl:Restriction ;
-                    owl:onProperty :hasBodyType ;
-                    owl:someValuesFrom :CarBody
-                  ]
-] .
-
-
-[ owl:intersectionOf ( :Car
-                       [ rdf:type owl:Class ;
-                         owl:unionOf ( [ rdf:type owl:Restriction ;
-                                         owl:onProperty :hasNumberOfDoors ;
-                                         owl:hasValue 3
-                                       ]
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :hasNumberOfDoors ;
-                                         owl:hasValue 5
-                                       ]
-                                     )
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf [ rdf:type owl:Restriction ;
-                    owl:onProperty :hasEngine ;
-                    owl:someValuesFrom :CarEngineType
-                  ]
-] .
-
-
-[ owl:intersectionOf ( :Car
-                       [ rdf:type owl:Class ;
-                         owl:unionOf ( [ rdf:type owl:Restriction ;
-                                         owl:onProperty :hasNumberOfDoors ;
-                                         owl:hasValue 3
-                                       ]
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :hasNumberOfDoors ;
-                                         owl:hasValue 5
-                                       ]
-                                     )
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf [ rdf:type owl:Restriction ;
-                    owl:onProperty :hasNumberOfDoors ;
-                    owl:someValuesFrom xsd:integer
-                  ]
-] .
-
-
-[ owl:intersectionOf ( :Car
-                       [ rdf:type owl:Class ;
-                         owl:unionOf ( [ rdf:type owl:Restriction ;
-                                         owl:onProperty :hasNumberOfDoors ;
-                                         owl:hasValue 3
-                                       ]
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :hasNumberOfDoors ;
-                                         owl:hasValue 5
-                                       ]
-                                     )
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf [ rdf:type owl:Restriction ;
-                    owl:onProperty :hasNumberOfSeats ;
-                    owl:someValuesFrom xsd:integer
-                  ]
-] .
-
-
-[ owl:intersectionOf ( :Car
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasMileage ;
-                         owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                              owl:onDatatype xsd:integer ;
-                                              owl:withRestrictions ( [ xsd:maxInclusive 100
-                                                                     ]
-                                                                   )
-                                            ]
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf :Car
-] .
-
-
-[ owl:intersectionOf ( :Car
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasMileage ;
-                         owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                              owl:onDatatype xsd:integer ;
-                                              owl:withRestrictions ( [ xsd:maxInclusive 100
-                                                                     ]
-                                                                   )
-                                            ]
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf :New
-] .
-
-
-[ owl:intersectionOf ( :Car
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasNumberOfDoors ;
-                         owl:hasValue 2
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf :Car
-] .
-
-
-[ owl:intersectionOf ( :Car
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasNumberOfDoors ;
-                         owl:hasValue 2
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf :Coupe
-] .
-
-
-[ owl:intersectionOf ( :Car
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasNumberOfDoors ;
-                         owl:hasValue 4
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf :Car
-] .
-
-
-[ owl:intersectionOf ( :Car
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasNumberOfDoors ;
-                         owl:hasValue 4
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf [ rdf:type owl:Restriction ;
-                    owl:onProperty :hasBodyType ;
-                    owl:someValuesFrom :CarBody
-                  ]
-] .
-
-
-[ owl:intersectionOf ( :Car
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasNumberOfDoors ;
-                         owl:hasValue 4
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf [ rdf:type owl:Restriction ;
-                    owl:onProperty :hasEngine ;
-                    owl:someValuesFrom :CarEngineType
-                  ]
-] .
-
-
-[ owl:intersectionOf ( :Car
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasNumberOfDoors ;
-                         owl:hasValue 4
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf [ rdf:type owl:Restriction ;
-                    owl:onProperty :hasNumberOfDoors ;
-                    owl:someValuesFrom xsd:integer
-                  ]
-] .
-
-
-[ owl:intersectionOf ( :Car
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasNumberOfDoors ;
-                         owl:hasValue 4
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf [ rdf:type owl:Restriction ;
-                    owl:onProperty :hasNumberOfSeats ;
-                    owl:someValuesFrom xsd:integer
-                  ]
-] .
-
-
-[ owl:intersectionOf ( :Car
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasNumberOfDoors ;
-                         owl:hasValue 4
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf [ rdf:type owl:Restriction ;
-                    owl:onProperty :hasNumberOfDoors ;
-                    owl:hasValue 4
-                  ]
-] .
-
-
-[ owl:intersectionOf ( :Car
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :hasNumberOfDoors ;
-                         owl:hasValue 5
-                       ]
-                     ) ;
-  rdf:type owl:Class ;
-  rdfs:subClassOf :Car
-] .
-
-
 [ rdf:type owl:Class ;
   owl:oneOf ( :CoupeBody
               :MiniVanBody
@@ -1791,7 +1166,7 @@
                                   ]
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :hasBrand ;
-                                    owl:hasValue :Tesla
+                                    owl:hasValue :TeslaBrand
                                   ]
                                 )
                   ]
@@ -1800,7 +1175,7 @@
 
 [ rdf:type owl:Restriction ;
   owl:onProperty :hasBrand ;
-  owl:hasValue :Tesla ;
+  owl:hasValue :TeslaBrand ;
   rdfs:subClassOf [ rdf:type owl:Class ;
                     owl:unionOf ( [ rdf:type owl:Restriction ;
                                     owl:onProperty :hasEngine ;
@@ -1808,7 +1183,7 @@
                                   ]
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :hasBrand ;
-                                    owl:hasValue :Tesla
+                                    owl:hasValue :TeslaBrand
                                   ]
                                 )
                   ]
@@ -1854,6 +1229,17 @@
                 :Combustion
                 :Hybrid
                 :Hydrogen
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CarBody
+                :CarBrand
+                :CarEngineType
+                :Efficiency
+                :MPG
+                :Model
               )
 ] .
 
